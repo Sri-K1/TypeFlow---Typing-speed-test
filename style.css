@@ -7,7 +7,7 @@
   --text: #f4f1ea;
   --secondary-text: #b6b1a8;
   --tertiary-text: #7e7a73;
-  --accent: #d7a86e;
+  --accent: #6ed7b2;
   --accent-2: #f0d8b3;
   --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
 }
@@ -22,7 +22,7 @@ html, body{
 body{
   font-family: "Inter", sans-serif;
   color: var(--text);
-  background:radial-gradient(circle at top left, rgba(215, 168, 110, 0.08), transparent 30%),
+  background:radial-gradient(circle at top left, rgba(89, 231, 202, 0.252), transparent 30%),
 radial-gradient(circle at top right, rgba(255, 255, 255, 0.05), transparent 28%),
 linear-gradient(180deg, #111215 0%, #0c0d10 100%);
   position: relative;
@@ -114,7 +114,7 @@ h1{
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-size: 0.68rem;
-  color: var()
+  color: var(--accent);
 }
 .prompt{
   font-size: clamp(1.15rem, 2vw, 1.5rem);
@@ -153,17 +153,37 @@ textarea{
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 textarea::placeholder{
-  color: #c8944a;
+  color: var(--accent);
 }
 textarea:focus{
-  border-color: rgba(215, 168, 110, 0.743);
+  border-color: var(--accent);
   box-shadow: 0 0 0 4px (215, 168, 110, 0.10);
 }
 textarea:focus::placeholder{
-  color: #ffbd60; 
+  color: var(--accent);
 }
 .actions{
   display: flex;
   justify-content: flex-end;
   margin-top: 14px;
+}
+button{
+  appearance: none;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.03);
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 11px 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+button:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.15);
+}
+button:active{
+  transform: translateY(0);
 }
