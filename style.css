@@ -1,12 +1,12 @@
 :root{
   --bg: #0f1012;
-  --bg-soft: #15171b;
+  --bg-soft: #2f323a;
   --surface: rgba(255, 255, 255, 0.03);
   --surface-strong: rgba(255, 255, 255, 0.06);
   --border: rgba(255, 255, 255, 0.08);
   --text: #f4f1ea;
-  --muted: #a7a29a;
-  --muted-2: #7e7a73;
+  --secondary-text: #b6b1a8;
+  --tertiary-text: #7e7a73;
   --accent: #d7a86e;
   --accent-2: #f0d8b3;
   --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
@@ -51,7 +51,7 @@ linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-size: 0.72rem;
-  color: var(--muted-2);
+  color: var(--tertiary-text);
   margin-bottom: 14px;
 }
 .title-row{
@@ -71,7 +71,7 @@ h1{
   max-width: 560px;
   font-size:1.02rem;
   line-height:1.7;
-  color: var(--muted);
+  color: var(--secondary-text);
 }
 .stats{
   display: grid;
@@ -91,7 +91,7 @@ h1{
   text-transform: uppercase;
   letter-spacing: 0.15em;
   font-size: 0.7rem;
-  color:var(--muted-2);
+  color:var(--tertiary-text);
   margin-bottom:10px;
 }
 .stat-value{
@@ -99,4 +99,71 @@ h1{
   font-size:1.6rem;
   line-height: 1;
   font-weight: 600;
+}
+.card{
+  position: relative;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.025)),
+    rgba(10, 11, 13, 0.7);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+.card-label{
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.68rem;
+  color: var()
+}
+.prompt{
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  line-height: 2;
+  color: var(--tertiary-text);
+  min-height: 150px;
+  max-width: 100%;
+  white-space: pre-wrap;
+}
+.divider{
+  height: 1px;
+  background: linear-gradient(90deg,transparent, rgba(255,255,255,0.10), transparent);
+  margin: 22px 0 18px;
+}
+.input-label{
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tertiary-text);
+  margin-bottom: 12px;
+}
+textarea{
+  width:100%;
+  min-height:130px;
+  resize: none;
+  border: 1px solid var(--border);
+  border-radius:18px;
+  background: rgba(255,255,255,0.02);
+  color:var(--text);
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 18px 18px;
+  outline:none; 
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+textarea::placeholder{
+  color: #c8944a;
+}
+textarea:focus{
+  border-color: rgba(215, 168, 110, 0.743);
+  box-shadow: 0 0 0 4px (215, 168, 110, 0.10);
+}
+textarea:focus::placeholder{
+  color: #ffbd60; 
+}
+.actions{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 14px;
 }
