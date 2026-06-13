@@ -187,3 +187,22 @@ button:hover{
 button:active{
   transform: translateY(0);
 }
+.time-selector{
+  display:flex;
+  gap: 10px;
+  margin: 24px 0;
+}
+.time-btn{
+  padding: 10px 16px;
+  border-radius: 12px;
+  border:1px solid var(--border);
+  background: var(--bg);
+  color: var(--secondary-text);
+  cursor:pointer;
+  transition:0.2s ease;
+}
+.time-btn.active{
+  color: var(--text);
+  border-color: var(--accent);
+  background: rgba(110, 215, 173, 0.358);
+}
