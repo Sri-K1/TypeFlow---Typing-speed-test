@@ -1,37 +1,52 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TypeFlow</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TypeFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="container">
-    <div class="top">
-        <span class="label">time</span>
-        <span id="time">60</span>
-    </div>
-    <div class="stat">
-        <span class="label">wpm</span>
-        <span id="wpm">0</span>    
-    </div>
-    <div class="stat">
-        <span class="label">accuracy</span>
-        <span id="accuracy">100%</span>
-    </div>
-    <div class="stat">
-        <span class="label">mistakes</span>
-        <span id="mistakes">0</span>
-    </div>
-</div>
-<h1>TypeFlow</h1>
-<div id="text" class="text"></div>
-<textarea id="input" placeholder="start typing here..."></textarea>
-<button id="restart">restart</button>
-</div>
-<script src="script.js"></script>
+  <main class="shell">
+    <section class="hero">
+      <p class="eyebrow">typing practice - 60 second sprint</p>
+      <div class="title-row">
+        <h1>TypeFlow</h1>
+      </div>
+      <p class="subtitle"> A simple typing test website.</p>
+    </section>
+    <section class="stats" aria-label="typing stats">
+      <div class="stat">
+        <span class="stat-label">time</span>
+        <span id="time" class="stat-value">60</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">wpm</span>
+        <span id="wpm" class="stat-value">0</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">accuracy</span>
+        <span id="accuracy" class="stat-value">100%</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">mistakes</span>
+        <span id="mistakes" class="stat-value">0</span>
+      </div>
+    </section>
+    <section class="card">
+      <p class="card-label">prompt</p>
+      <div id="text" class="prompt"></div>
+      <div class="divider"></div>
+      <label class="input-label" for="input">start typing...</label>
+      <textarea id="input" placeholder="click here and start typing..."></textarea>
+      <div class="actions">
+        <button id="restart">restart</button>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
 </body>
 </html>
