@@ -229,3 +229,25 @@ button:active{
 .results-grid h3{
   font-size: 3rem;
 }
+.footer{
+  margin-top: 80px;
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  color: var(--accent-2);
+  font-size: 0.9rem;
+}
+.footer-links{
+  display: flex;
+  gap: 20px;
+}
+.footer-links a{
+  text-decoration: none;
+  color: rgba(64, 132, 107, 0.647);
+  transition: 0.2s ease;
+}
+.footer-links a:hover{
+  color: var(--accent);
+}
