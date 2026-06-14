@@ -206,3 +206,26 @@ button:active{
   border-color: var(--accent);
   background: rgba(110, 215, 173, 0.358);
 }
+.hidden{
+  display:none;
+}
+.results-screen{
+  text-align: center;
+  padding-top:80px;
+}
+.results-screen h2{
+  font-size: 3rem;
+  margin-bottom: 40px;
+}
+.results-grid{
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-bottom: 40px;
+}
+.results-grid p{
+  color: var(--secondary-text);
+}
+.results-grid h3{
+  font-size: 3rem;
+}
