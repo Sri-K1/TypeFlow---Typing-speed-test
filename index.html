@@ -11,6 +11,7 @@
 </head>
 <body>
   <main class="shell">
+    <div id="typing-screen">
     <section class="hero">
       <p class="eyebrow">Typing practice - 30/60 second sprint</p>
       <div class="title-row">
@@ -50,6 +51,25 @@
         <button id="restart">Restart</button>
       </div>
     </section>
+    </div>
+    <div id="results-screen" class="hidden">
+    <h2>Results</h2>
+    <div class="results-grid">
+        <div>
+            <p>WPM</p>
+            <h3 id="final-wpm">0</h3>
+        </div>
+        <div>
+            <p>Accuracy</p>
+            <h3 id="final-accuracy">0%</h3>
+        </div>
+        <div>
+            <p>Mistakes</p>
+            <h3 id="final-mistakes">0</h3>
+        </div>
+    </div>
+    <button id="try-again">Try Again</button>
+</div>
   </main>
   <script src="script.js"></script>
 </body>
