@@ -5,7 +5,7 @@ const paragraphs = [
     "Hackclub is a website where teens can participate in you ship we ship events, where they would have to build cool open source projects for amazing prizes in return from hackclub. Some event names are: Beest, Macondo, Stardance, and Flavortown",
     "Many successful projects begin as simple ideas. Instead of trying to build something huge asap, try to focus on creating a polished foundation, so once the core experience feels solid, you could add additional features to make the user interface and user experience better"
 ]
-
+/* Elements and setting values */
 const promptText = document.getElementById("text");
 const typingInput = document.getElementById("input");
 const timeDisplay = document.getElementById("time");
@@ -14,28 +14,71 @@ const accuracyDisplay = document.getElementById("accuracy");
 const mistakesDisplay = document.getElementById("mistakes");
 const restartButton = document.getElementById("restart");
 const timeOptions = document.querySelectorAll(".time-btn");
+const typingScreen = document.getElementById("typing-screen");
+const resultsScreen = document.getElementById("results-screen");
+const finalWpm = document.getElementById("final-wpm");
+const finalAccuracy = document.getElementById("final-accuracy");
+const finalMistakes = document.getElementById("final-mistakes");
+const tryAgainbtn = document.getElementById("try-again");
 let activeParagraph = "";
 let countdownTimer = null;
 let selectedDuration = 30;
 let timeRemaining = selectedDuration; 
 let testStarted = false; 
-
+let currentWpm = 0;
+let currentAccuracy = 100;
+let currentMistakes = 0;
+/* Prompt setup */
 function chooseRandomPara()
 {
     const randomIndex = Math.floor(Math.random() * paragraphs.length);
     activeParagraph = paragraphs[randomIndex];
     promptText.textContent = activeParagraph;
 }
-
+/* Results screen */
+function showResults()
+{
+    finalWpm.textContent = currentWpm;
+    finalAccuracy.textContent = `${currentAccuracy}%`;
+    finalMistakes.textContent = currentMistakes;
+    typingScreen.classList.add("hidden");
+    resultsScreen.classList.remove("hidden");
+}
+/* Timer */
 function startCountdown()
 {
     countdownTimer = setInterval(() => {
         timeRemaining--;
         timeDisplay.textContent = timeRemaining;
-        if(timeRemaining <= 0)
+        if(timeRemaining <= 0) // Time over to disable typing.
         {
             clearInterval(countdownTimer);
             typingInput.ariaDisabled = true;
+            showResults();
         }
     } , 1000);
+}
+/* Stats */
+function updateStats()
+{
+    const typedText = typingInput.value;
+    let correctCharacters = 0;
+    let mistakes = 0;
+    for(let i = 0; i < typedText.length; i++)
+    {
+        if(typedText[i] === activeParagraph[i])
+        {
+            correctCharacters++;
+        }
+        else
+        {
+            mistakes++;
+        }
+    }
+    currentMistakes = mistakes;
+    mistakesDisplay.textContent = mistakes;
+    const accuracy = typedText.length === 0 ? 100: Math.round((correctCharacters/typedText.length)*100);
+    currentAccuracy = accuracy;
+    accuracyDisplay.textContent = `${accuracy}%`;
+    const elapsedMinutes = (selectedDuration - timeRemaining) / 60;
 }
