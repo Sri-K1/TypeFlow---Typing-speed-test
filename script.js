@@ -81,4 +81,27 @@ function updateStats()
     currentAccuracy = accuracy;
     accuracyDisplay.textContent = `${accuracy}%`;
     const elapsedMinutes = (selectedDuration - timeRemaining) / 60;
+    const calculatedWpm = elapsedMinutes > 0 ? Math.round((correctCharacters/5)/elapsedMinutes) : 0;
+    currentWpm = calculatedWpm;
+    wpmDisplay.textContent = calculatedWpm;
+}
+/* Test reset */
+function resetTest()
+{
+    clearInterval(countdownTimer);
+    resultsScreen.classList.add("hidden");
+    typingScreen.classList.remove("hidden");
+    testStarted = false;
+    timeRemaining = selectedDuration;
+    currentWpm = 0;
+    currentAccuracy = 100;
+    currentMistakes = 0;
+    timeDisplay.textContent = selectedDuration;
+    wpmDisplay.textContent = "0";
+    accuracyDisplay.textContent = "100%";
+    mistakesDisplay.textContent = "0";
+    typingInput.ariaDisabled = false;
+    typingInput.value = "";
+    chooseRandomPara();
+    typingInput.focus();
 }
