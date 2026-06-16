@@ -10,6 +10,18 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="popup-overlay" class="popup-overlay">
+    <div class="popup-box">
+        <button id="close-popup" class="close-popup">&times;</button>
+        <h2>Important</h2>
+        <p>
+            This website is built for testing your accuracy, not speed.
+            Try to type everything correctly and avoid skipping words or
+            characters. Typing text wrong or missing it will lower both your 
+            accuracy and WPM score.
+        </p>
+    </div>
+</div>
   <main class="shell">
     <div id="typing-screen">
     <section class="hero">
@@ -17,7 +29,7 @@
       <div class="title-row">
         <h1>TypeFlow</h1>
       </div>
-      <p class="subtitle"> A simple typing speed test website (inspired by typing test websites)</p>
+      <p class="subtitle"> A simple typing test website (inspired by typing test websites)</p>
     </section>
    <div class="time-selector">
       <button class="time-btn active" data-time="30">30s</button>
