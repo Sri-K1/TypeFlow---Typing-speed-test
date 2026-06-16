@@ -53,35 +53,27 @@ function startCountdown()
         if(timeRemaining <= 0) // Time over to disable typing.
         {
             clearInterval(countdownTimer);
-            typingInput.ariaDisabled = true;
+            typingInput.disabled = true;
             showResults();
         }
     } , 1000);
 }
 /* Stats */
-function updateStats()
-{
+function updateStats() {
     const typedText = typingInput.value;
     let correctCharacters = 0;
-    let mistakes = 0;
-    for(let i = 0; i < typedText.length; i++)
-    {
-        if(typedText[i] === activeParagraph[i])
-        {
+    for (let i = 0; i < typedText.length; i++) {
+        if (typedText[i] === activeParagraph[i]) {
             correctCharacters++;
         }
-        else
-        {
-            mistakes++;
-        }
     }
+    const mistakes = typedText.length - correctCharacters;
     currentMistakes = mistakes;
-    mistakesDisplay.textContent = mistakes;
-    const accuracy = typedText.length === 0 ? 100: Math.round((correctCharacters/typedText.length)*100);
+    const accuracy = typedText.length === 0 ? 100 : Math.round((correctCharacters / typedText.length) * 100);
     currentAccuracy = accuracy;
     accuracyDisplay.textContent = `${accuracy}%`;
     const elapsedMinutes = (selectedDuration - timeRemaining) / 60;
-    const calculatedWpm = elapsedMinutes > 0 ? Math.round((correctCharacters/5)/elapsedMinutes) : 0;
+    const calculatedWpm = elapsedMinutes > 0 ? Math.round((correctCharacters / 5) / elapsedMinutes): 0;
     currentWpm = calculatedWpm;
     wpmDisplay.textContent = calculatedWpm;
 }
@@ -100,8 +92,39 @@ function resetTest()
     wpmDisplay.textContent = "0";
     accuracyDisplay.textContent = "100%";
     mistakesDisplay.textContent = "0";
-    typingInput.ariaDisabled = false;
+    typingInput.disabled = false;
     typingInput.value = "";
     chooseRandomPara();
     typingInput.focus();
 }
+typingInput.addEventListener("input", () => 
+{
+    if (!testStarted)
+    {
+        testStarted = true;
+        startCountdown();
+    }
+    updateStats();
+});
+restartButton.addEventListener("click", () => 
+{
+    resetTest();
+});
+tryAgainbtn.addEventListener("click", () => 
+{
+    resetTest();
+});
+timeOptions.forEach(option => 
+{
+    option.addEventListener("click", () => 
+    {
+        timeOptions.forEach(button => 
+        {
+            button.classList.remove("active");
+        });
+        option.classList.add("active");
+        selectedDuration = Number(option.dataset.time);
+        resetTest();
+    });
+
+});
