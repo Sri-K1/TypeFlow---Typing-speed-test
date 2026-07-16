@@ -29,8 +29,8 @@ let countdownTimer = null;
 let selectedDuration = 30;
 let timeRemaining = selectedDuration;
 let testStarted = false;
-let currentWpm = 0;
-let currentAccuracy = 100;
+let currentWpm = "";
+let currentAccuracy = "";
 let currentMistakes = 0;
 /* Timer and paragraph functions */
 function chooseRandomParagraph() 
@@ -122,12 +122,6 @@ option.addEventListener("click", () =>
     selectedDuration = Number(option.dataset.time);
     resetTest();
     });
-});
-const popupOverlay = document.getElementById("popup-overlay");
-const closePopupButton = document.getElementById("close-popup");
-closePopupButton.addEventListener("click", () => 
-{
-    popupOverlay.classList.add("popup-hidden");
 });
     chooseRandomParagraph();
     resetTest();
