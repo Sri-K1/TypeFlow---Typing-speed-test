@@ -12,7 +12,8 @@ Click on this link to go test out your typing speed!! : https://typing-speed-tes
 - Javascript
 - CSS
 - HTML
-- AI (used mostly for learning and some help with code, under 30% of AI was used)
+- AI (used mostly for learning and some help with the JS code, code wasn't directly copy pasted or used from AI but I used AI to get an idea on how to code the certain part of JS for this project)
+- Pretier (VS Code extension used for clean code formatting)
 
 # Screenshots
 <img width="1427" height="689" alt="Screenshot 2026-06-17 at 5 08 10 PM" src="https://github.com/user-attachments/assets/7acee326-2c86-4f5b-8bfa-1a10d6e0c9a0" />
