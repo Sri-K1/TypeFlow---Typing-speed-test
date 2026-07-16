@@ -4,7 +4,7 @@
   --surface: rgba(255, 255, 255, 0.03);
   --surface-strong: rgba(255, 255, 255, 0.06);
   --border: rgba(255, 255, 255, 0.08);
-  --text: #f4f1ea;
+  --text: #45c578;
   --secondary-text: #b6b1a8;
   --tertiary-text: #7e7a73;
   --accent: #6ed7b2;
@@ -20,24 +20,22 @@ html, body{
   min-height: 100%;
 }
 body{
-  font-family: "Inter", sans-serif;
+  font-family: "Patrick Hand SC", sans-serif;
   color: var(--text);
-  background:radial-gradient(circle at top left, rgba(89, 231, 202, 0.252), transparent 30%),
-radial-gradient(circle at top right, rgba(255, 255, 255, 0.05), transparent 28%),
-linear-gradient(180deg, #111215 0%, #0c0d10 100%);
+  background: #000000;
+background: linear-gradient(360deg, rgba(0, 0, 0, 1) 60%, rgb(145, 112, 81) 120%);
   position: relative;
   overflow-x: hidden;
+  scroll-behavior:smooth;
 }
 body::before{
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image:linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 42px 42px;
-  mask-image: radial-gradient(circle at center, black 55%, transparent 100%);
-  opacity: 0.25;
+  background: #000000;
+background: linear-gradient(360deg, rgba(0, 0, 0, 1) 60%, rgba(145, 112, 81, 1) 120%);
+opacity: 0.1;
 }
 .shell{
   width: min(980px, calc(100% - 32px));
@@ -83,15 +81,16 @@ h1{
   padding: 18px 18px 16px;
   border: 1px solid var(--border);
   border-radius: 16px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-  box-shadow: 0 1px 0 rgba(255,255,255,0.03) inset;
+  font-family: "Yuyu";
+  font-size:1.5rem;
 }
 .stat-label{
   display: block;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 0.7rem;
-  color:var(--tertiary-text);
+  letter-spacing: 0.05em;
+  font-family: "Patrick Hand SC", sans-serif;
+  font-size: 1rem;
+  color:rgb(145, 112, 81);
   margin-bottom:10px;
 }
 .stat-value{
