@@ -18,7 +18,9 @@ Click on this link to go test out your typing speed!! : https://type-flow-typing
 
 # Screenshots
 <img width="1435" height="687" alt="Screenshot 2026-08-01 at 12 24 02 PM" src="https://github.com/user-attachments/assets/d1390d38-15fd-4b51-8322-4d8e5eefdd86" />
+
 <img width="1429" height="691" alt="Screenshot 2026-08-01 at 12 24 34 PM" src="https://github.com/user-attachments/assets/3ad00e19-e1cc-4a44-b6cf-87f576cb98ed" />
+
 <img width="1429" height="691" alt="Screenshot 2026-08-01 at 12 25 21 PM" src="https://github.com/user-attachments/assets/c2eee7a4-a782-46db-9693-be1e833675f7" />
 
 
