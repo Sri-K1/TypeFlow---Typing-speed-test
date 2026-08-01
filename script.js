@@ -25,6 +25,7 @@ const finalAccuracy = document.getElementById("final-accuracy");
 const finalMistakes = document.getElementById("final-mistakes");
 const tryAgainBtn = document.getElementById("try-again");
 let activeParagraph = "";
+let targetWords = []; 
 let countdownTimer = null;
 let selectedDuration = 30;
 let timeRemaining = selectedDuration;
@@ -37,6 +38,7 @@ function chooseRandomParagraph()
 {
     const randomIndex = Math.floor(Math.random() * paragraphs.length);
     activeParagraph = paragraphs[randomIndex];
+    targetWords = activeParagraph.split(" ");
     promptText.textContent = activeParagraph;
 }
 function showResults() 
@@ -61,27 +63,94 @@ function startCountdown()
         }
     }, 1000);
 }
-/* Stats */
 function updateStats() 
 {
     const typedText = typingInput.value;
+    const typedWords = typedText.length ? typedText.split(" ") : [];
     let correctCharacters = 0;
-    for (let i = 0; i < typedText.length; i++) 
+    let typedCharacters = 0;
+    for (let w = 0; w < typedWords.length; w++)
     {
-        if (typedText[i] === activeParagraph[i]) 
+    const typedWord = typedWords[w];
+    const isLastTypedWord = w === typedWords.length - 1;
+        if (w >= targetWords.length)
+        {
+            if (!isLastTypedWord) continue;
+            break;
+        }
+    const targetWord = targetWords[w];
+    for (let i = 0; i < typedWord.length; i++)
+    {
+        typedCharacters++;
+        if (typedWord[i] === targetWord[i])
         {
             correctCharacters++;
         }
     }
-    const mistakes = typedText.length - correctCharacters;
+        if (!isLastTypedWord && w < targetWords.length - 1)
+        {
+            typedCharacters++;
+            correctCharacters++;
+        }
+    }
+    const mistakes = typedCharacters - correctCharacters;
     currentMistakes = mistakes;
-    const accuracy = typedText.length === 0 ? 100 : Math.round((correctCharacters / typedText.length) * 100);
+    const accuracy = typedCharacters === 0 ? 100 : Math.round((correctCharacters / typedCharacters) * 100);
     currentAccuracy = accuracy;
     accuracyDisplay.textContent = `${accuracy}%`;
     const elapsedMinutes = (selectedDuration - timeRemaining) / 60;
     const calculatedWpm = elapsedMinutes > 0 ? Math.round((correctCharacters / 5) / elapsedMinutes): 0;
     currentWpm = calculatedWpm;
     wpmDisplay.textContent = calculatedWpm;
+}
+function typedTextScore(typedText) {
+  const chars = promptEl.children;
+  for (let i = 0; i < chars.length; i++) 
+{
+    chars[i].className = "char pending";
+  }
+  const typedWords = typedText.length ? typedText.split(" ") : [];
+  let correctChars = 0;
+  let typedChars = 0;
+  let charIndex = 0;
+
+for (let w = 0; w < typedWords.length; w++) 
+{
+    const typedWord = typedWords[w];
+    const isLastTypedWord = w === typedWords.length - 1;
+    if (w >= targetWords.length) 
+    {
+      if (!isLastTypedWord) continue; 
+      break;
+    }
+    const targetWord = targetWords[w];
+    for (let i = 0; i < typedWord.length; i++) 
+    {
+      typedChars++;
+      const targetChar = targetWord[i];
+      const isCorrect = targetChar !== undefined && typedWord[i] === targetChar;
+      if (isCorrect) correctChars++;
+
+      if (targetChar !== undefined && charIndex < chars.length) 
+    {
+        chars[charIndex].classList.remove("pending");
+        chars[charIndex].classList.add(isCorrect ? "correct" : "incorrect");
+        charIndex++;
+      }
+    }
+    if (!isLastTypedWord && w < targetWords.length - 1) 
+    {
+      typedChars++;
+      correctChars++;
+      if (charIndex < chars.length) {
+        chars[charIndex].classList.remove("pending");
+        chars[charIndex].classList.add("correct");
+        charIndex++;
+      }
+    }
+  }
+  updateCaret(charIndex);
+  return {correctChars, typedChars};
 }
 /* Restart test */
 function resetTest() 
