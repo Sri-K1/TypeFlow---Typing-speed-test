@@ -63,22 +63,42 @@ function startCountdown()
         }
     }, 1000);
 }
+function wordSimilarity(a, b) 
+{
+    if (!a.length || !b.length) return 0;
+    let matches = 0;
+    const len = Math.min(a.length, b.length);
+    for (let i = 0; i < len; i++) 
+    {
+        if (a[i] === b[i]) matches++;
+    }
+    return matches / Math.max(a.length, b.length);
+}
 function updateStats() 
 {
     const typedText = typingInput.value;
     const typedWords = typedText.length ? typedText.split(" ") : [];
     let correctCharacters = 0;
     let typedCharacters = 0;
+    let t = 0;
     for (let w = 0; w < typedWords.length; w++)
     {
     const typedWord = typedWords[w];
     const isLastTypedWord = w === typedWords.length - 1;
-        if (w >= targetWords.length)
+        if (t >= targetWords.length)
         {
             if (!isLastTypedWord) continue;
             break;
         }
-    const targetWord = targetWords[w];
+    const targetWord = targetWords[t];
+    const currentMatch = wordSimilarity(typedWord, targetWord);
+     const nextTypedWord = typedWords[w + 1];
+    const nextMatch = nextTypedWord ? wordSimilarity(nextTypedWord, targetWord) : 0;
+    if (!isLastTypedWord && currentMatch < 0.5 && nextMatch > currentMatch)
+    {
+    typedCharacters += typedWord.length + 1;
+    continue;
+    } 
     for (let i = 0; i < typedWord.length; i++)
     {
         typedCharacters++;
@@ -92,6 +112,7 @@ function updateStats()
             typedCharacters++;
             correctCharacters++;
         }
+        t++;
     }
     const mistakes = typedCharacters - correctCharacters;
     currentMistakes = mistakes;
